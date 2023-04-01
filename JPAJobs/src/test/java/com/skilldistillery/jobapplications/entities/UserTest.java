@@ -1,5 +1,4 @@
 package com.skilldistillery.jobapplications.entities;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -13,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class JobApplicationTest {
+class UserTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private JobApplication job;
+	private User user;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,25 +31,20 @@ class JobApplicationTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		job =em.find(JobApplication.class, 1);
+		user =em.find(User.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		job=null;
+		user=null;
 	}
 
 	@Test
 	void test() {
-		assertNotNull(job);
-		assertEquals(job.getCompanyName(),"Google");
-		assertEquals(job.getDateApplied().getYear(),2023);
-		assertEquals(job.getJobDescription(),"As a Software Engineer working on Google's critical production applications and infrastructure, your mission will be to ensure Google is always fast");
-		assertEquals(job.getSalary(),125000);
-		assertEquals(job.getNotes(),"Need to study more leetcode");
-		assertEquals(job.getJobTitle(),"Software Engineer");
+		assertNotNull(user);
+		assertEquals(user.getUsername(),"admin");
+		assertEquals(user.getPassword(),"admin");
 		
 	}
-
 }

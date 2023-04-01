@@ -10,6 +10,8 @@
 
 
 		<class>com.skilldistillery.jobapplications.entities.JobApplication</class>
+		<class>com.skilldistillery.jobapplications.entities.Status</class>
+		<class>com.skilldistillery.jobapplications.entities.User</class>
 
 		<!-- end entities -->
 
