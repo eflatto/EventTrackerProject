@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -39,13 +40,19 @@ public class JobApplication {
 	@Column(name = "date_applied")
 	private LocalDate dateApplied;
 
-	
+
 	@ManyToOne
 	@JoinColumn(name="user_id")
+//  @JsonBackReference("status-jobApplication")
+	@JsonIgnore
+//	@JsonManagedReference("job-application-user")
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="status_id")
+//	@JsonBackReference("status-jobApplication")
+	@JsonIgnore
+//	@JsonManagedReference("job-application-status")
 	private Status status;
 
 	public Status getStatus() {
@@ -140,6 +147,13 @@ public class JobApplication {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "JobApplication [id=" + id + ", notes=" + notes + ", salary=" + salary + ", companyName=" + companyName
+				+ ", jobTitle=" + jobTitle + ", jobDescription=" + jobDescription + ", dateApplied=" + dateApplied
+				+ ", user=" + user + ", status=" + status + "]";
 	}
 
 }

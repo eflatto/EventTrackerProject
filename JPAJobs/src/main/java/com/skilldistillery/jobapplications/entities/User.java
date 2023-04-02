@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 	public User() {
 		super();
@@ -22,16 +23,14 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	private String username;
-	
-	private String password;
-	
-	@OneToMany(mappedBy="user")
-	@JsonBackReference("user-jobApplication")
-	private List <JobApplication> jobApplications;
 
-	
+	private String username;
+
+	private String password;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@JsonBackReference("job-application-user")
+	private List<JobApplication> jobApplications;
 
 	@Override
 	public int hashCode() {

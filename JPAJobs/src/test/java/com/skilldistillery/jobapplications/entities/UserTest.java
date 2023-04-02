@@ -50,8 +50,7 @@ class UserTest {
 	@Test
 	void test_user_jobapp_mapping() {
 		assertNotNull(user);
-		assertEquals(user.getJobApplications().get(0).getCompanyName(),"Google");
-
-		
+		assertEquals(user.getJobApplications().get(0).getCompanyName(),"Google");	
 	}
+	
 }

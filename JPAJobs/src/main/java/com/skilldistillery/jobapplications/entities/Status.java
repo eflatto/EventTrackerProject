@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,11 +29,12 @@ public class Status {
 	private String statusName;
 	
 
-	@OneToMany(mappedBy="status")
-	@JsonBackReference("status-jobApplication")
+	@OneToMany(mappedBy="status", fetch = FetchType.EAGER)
+	@JsonBackReference("job-application-status")
 	private List <JobApplication> jobApplication;
 	
-
+	
+	
 	
 	
 	public List<JobApplication> getJobApplication() {

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.jobapplications.entities.JobApplication;
+import com.skilldistillery.jobapplications.entities.Status;
 import com.skilldistillery.jobapplications.entities.User;
 import com.skilldistillery.jobapplications.repositories.UserRepository;
 
@@ -58,6 +60,21 @@ public class UserServiceImpl implements UserService {
 		}
 		return deleted;
 		
+	}
+
+	@Override
+	public List<User> searchByUserName(String keyword) {
+		keyword = "%" + keyword + "%";
+		return repo.findByUsernameLike(keyword);	
+		}
+
+	@Override
+	public List<JobApplication> showUserJobApps(int userId) {
+		User user = repo.findById(userId);
+
+		List<JobApplication> jobApplications = user.getJobApplications();
+
+		return jobApplications;
 	}
 
 }

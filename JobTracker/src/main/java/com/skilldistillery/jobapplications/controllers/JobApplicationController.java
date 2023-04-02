@@ -38,20 +38,33 @@ public class JobApplicationController {
 	}
 
 	@GetMapping("jobapplications/{id}")
-	public JobApplication getSingleApp(@PathVariable int id) {
-
+	public JobApplication getSingleApp(@PathVariable int id, HttpServletResponse res) {
 		JobApplication job = appService.getJobById(id);
+		if ( job== null) {
+			res.setStatus(404);
+		}
 
 		return job;
 	}
 
 	@PostMapping("jobapplications")
-	public JobApplication createApp(@RequestBody JobApplication jobApp) {
-
+	public JobApplication createApp(@RequestBody JobApplication jobApp,HttpServletRequest req,
+			HttpServletResponse res) {
+		try {
 		jobApp = appService.create(jobApp);
-
+		res.setStatus(201);
+		StringBuffer url = req.getRequestURL();
+		url.append("/").append(jobApp.getId());
+		res.setHeader("Location", url.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			jobApp = null;
+		}
 		return jobApp;
 	}
+	
+
 
 	@PutMapping("jobapplications/{id}")
 	public JobApplication updateApp(@PathVariable Integer id, @RequestBody JobApplication jobApp,
