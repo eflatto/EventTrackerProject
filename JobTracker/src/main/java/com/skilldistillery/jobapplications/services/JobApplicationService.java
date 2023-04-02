@@ -11,6 +11,7 @@ public interface JobApplicationService {
 	JobApplication update(JobApplication job,int jobId);
 	boolean deleteById(int jobId);
 	List<JobApplication> findAllByOrderBySalaryDesc();
+	long count();
 
 	
 

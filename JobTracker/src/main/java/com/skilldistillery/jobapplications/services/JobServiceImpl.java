@@ -68,5 +68,11 @@ public class JobServiceImpl implements JobApplicationService {
 	    return repo.findAllByOrderBySalaryDesc();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return repo.count();
+	}
+
 
 }

@@ -51,6 +51,10 @@ public class JobApplicationController {
     public List<JobApplication> findAllSortedBySalary() {
         return appService.findAllByOrderBySalaryDesc();
     }
+	@GetMapping("jobapplications/count")
+	public long countApps() {
+		return appService.count();
+	}
 
 	@PostMapping("jobapplications")
 	public JobApplication createApp(@RequestBody JobApplication jobApp,HttpServletRequest req,
