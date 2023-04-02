@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="status")
@@ -29,6 +29,7 @@ public class Status {
 	
 
 	@OneToMany(mappedBy="status")
+	@JsonBackReference("status-jobApplication")
 	private List <JobApplication> jobApplication;
 	
 

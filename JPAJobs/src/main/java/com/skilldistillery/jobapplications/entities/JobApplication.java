@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "job_application")
@@ -38,11 +39,11 @@ public class JobApplication {
 	@Column(name = "date_applied")
 	private LocalDate dateApplied;
 
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name="status_id")
 	private Status status;
