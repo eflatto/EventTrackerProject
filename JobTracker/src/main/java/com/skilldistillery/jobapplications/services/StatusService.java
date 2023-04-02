@@ -14,5 +14,6 @@ public interface StatusService {
 	Status update(Status status, int statusId);
 
 	boolean deleteById(int statusId);
+	public List<Status> searchByStatus(String keyword);
 
 }

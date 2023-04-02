@@ -58,5 +58,11 @@ public class StatusServiceImpl implements StatusService {
 		return deleted;
 		
 	}
+	@Override
+	public List<Status> searchByStatus(String status) {
+		status = "%" + status + "%";
+		return repo.findBystatusNameLike(status);
+	}
+
 
 }

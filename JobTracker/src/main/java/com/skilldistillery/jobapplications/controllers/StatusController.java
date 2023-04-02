@@ -24,7 +24,7 @@ public class StatusController {
 	private StatusService statusService;
 
 	@GetMapping("status")
-	public List<Status> getAllApps() {
+	public List<Status> getAllStatus() {
 
 		List<Status> list = statusService.findAll();
 
@@ -32,7 +32,7 @@ public class StatusController {
 	}
 
 	@GetMapping("status/{id}")
-	public Status getSingleApp(@PathVariable int id) {
+	public Status getSingleStatus(@PathVariable int id) {
 
 		Status status = statusService.getStatusById(id);
 
@@ -40,7 +40,7 @@ public class StatusController {
 	}
 
 	@PostMapping("status")
-	public Status createApp(@RequestBody Status status) {
+	public Status createStatus(@RequestBody Status status) {
 
 		status = statusService.create(status);
 
@@ -48,7 +48,7 @@ public class StatusController {
 	}
 
 	@PutMapping("status/{id}")
-	public Status updateApp(@PathVariable Integer id, @RequestBody Status status,
+	public Status updateStatus(@PathVariable Integer id, @RequestBody Status status,
 			HttpServletResponse res) {
 
 		try {
@@ -65,7 +65,7 @@ public class StatusController {
 	}
 
 	@DeleteMapping("status/{id}")
-	public void deleteApp(@PathVariable Integer id, HttpServletResponse res) {
+	public void deleteStatus(@PathVariable Integer id, HttpServletResponse res) {
 		try {
 			if (statusService.deleteById(id)) {
 				res.setStatus(204);
@@ -76,5 +76,10 @@ public class StatusController {
 			e.printStackTrace();
 			res.setStatus(400);
 		}
+	}
+	@GetMapping("status/{name}/keyword")
+	public List<Status>  findByStatusName(@PathVariable String name) {
+		 List<Status> status = statusService.searchByStatus(name);
+		 return status;
 	}
 }
