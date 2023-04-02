@@ -22,25 +22,46 @@ public class JobServiceImpl implements JobApplicationService {
 	@Override
 	public JobApplication getJobById(int jobId) {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.findById(jobId);
 	}
 
 	@Override
 	public JobApplication create(JobApplication job) {
 		// TODO Auto-generated method stub
-		return null;
+		if(job==null) {
+			throw new IllegalArgumentException("Job is null");
+		}
+		return repo.saveAndFlush(job);
 	}
 
 	@Override
 	public JobApplication update(JobApplication job, int jobId) {
 		// TODO Auto-generated method stub
+		JobApplication existingJob = repo.findById(jobId);
+		if(existingJob!= null) {
+			existingJob.setCompanyName(job.getCompanyName());
+			existingJob.setDateApplied(job.getDateApplied());
+			existingJob.setJobDescription(job.getJobDescription());
+			existingJob.setJobTitle(job.getJobTitle());
+			existingJob.setNotes(job.getNotes());
+			existingJob.setSalary(job.getSalary());
+
+			return repo.saveAndFlush(existingJob);
+		}
 		return null;
 	}
 
 	@Override
 	public boolean deleteById(int jobId) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean deleted = false;
+		JobApplication appToDelete = repo.findById(jobId);
+		if (appToDelete != null) {
+			repo.delete(appToDelete);
+			deleted = true;
+		}
+		return deleted;
+		
 	}
 
 }
