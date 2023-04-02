@@ -12,9 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "job_application")
@@ -43,16 +43,12 @@ public class JobApplication {
 
 	@ManyToOne
 	@JoinColumn(name="user_id")
-//  @JsonBackReference("status-jobApplication")
-	@JsonIgnore
-//	@JsonManagedReference("job-application-user")
+	@JsonIgnoreProperties({"jobApplications"})
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="status_id")
-//	@JsonBackReference("status-jobApplication")
-	@JsonIgnore
-//	@JsonManagedReference("job-application-status")
+	@JsonIgnoreProperties({"jobApplication"})
 	private Status status;
 
 	public Status getStatus() {

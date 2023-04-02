@@ -53,7 +53,7 @@ class JobTrackerApplicationTests {
 	}
 	
 	@Test
-	public void test_film_create() {
+	public void test_job_create() {
 		JobApplication newJob = new JobApplication();
 		newJob.setCompanyName("NEW TEST APP " + Math.random()); // title is unique
 		Status status = new Status();
@@ -66,7 +66,7 @@ class JobTrackerApplicationTests {
 	}
 	
 	@Test
-	public void test_film_delete() {
+	public void test_job_delete() {
 		JobApplication newJobApp = new JobApplication();
 		newJobApp.setCompanyName("NEW APP TO DELETE");
 		Status status = new Status();
