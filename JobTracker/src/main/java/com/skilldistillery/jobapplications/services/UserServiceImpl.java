@@ -39,8 +39,8 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		User existingUser = repo.findById(userId);
 		if(existingUser!= null) {
-			existingUser.getUsername();
-			existingUser.getPassword();
+			existingUser.setUsername(user.getUsername());
+			existingUser.setPassword(user.getPassword());
 			
 			return repo.saveAndFlush(existingUser);
 		}
