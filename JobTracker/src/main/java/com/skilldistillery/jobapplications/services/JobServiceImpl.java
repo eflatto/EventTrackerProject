@@ -63,5 +63,10 @@ public class JobServiceImpl implements JobApplicationService {
 		return deleted;
 		
 	}
+	@Override
+	public List<JobApplication> findAllByOrderBySalaryDesc() {
+	    return repo.findAllByOrderBySalaryDesc();
+	}
+
 
 }

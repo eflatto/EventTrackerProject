@@ -10,6 +10,8 @@ public interface JobApplicationService {
 	JobApplication create(JobApplication job);
 	JobApplication update(JobApplication job,int jobId);
 	boolean deleteById(int jobId);
+	List<JobApplication> findAllByOrderBySalaryDesc();
+
 	
 
 }

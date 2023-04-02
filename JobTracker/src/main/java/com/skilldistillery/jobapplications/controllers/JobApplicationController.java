@@ -46,6 +46,11 @@ public class JobApplicationController {
 
 		return job;
 	}
+	
+	@GetMapping("jobapplications/sort/salary")
+    public List<JobApplication> findAllSortedBySalary() {
+        return appService.findAllByOrderBySalaryDesc();
+    }
 
 	@PostMapping("jobapplications")
 	public JobApplication createApp(@RequestBody JobApplication jobApp,HttpServletRequest req,
