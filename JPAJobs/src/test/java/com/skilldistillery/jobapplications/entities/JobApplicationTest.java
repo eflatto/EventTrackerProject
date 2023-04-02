@@ -52,5 +52,17 @@ class JobApplicationTest {
 		assertEquals(job.getJobTitle(),"Software Engineer");
 		
 	}
+	@Test
+	void test_user_job_mapping() {
+		assertNotNull(job);
+		assertEquals(job.getUser().getUsername(),"admin");
+		
+	}
+	@Test
+	void test_status_job_mapping() {
+		assertNotNull(job);
+		assertEquals(job.getStatus().getStatusName(),"under review");
+		
+	}
 
 }

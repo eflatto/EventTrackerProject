@@ -47,4 +47,11 @@ class UserTest {
 		assertEquals(user.getPassword(),"admin");
 		
 	}
+	@Test
+	void test_user_jobapp_mapping() {
+		assertNotNull(user);
+		assertEquals(user.getJobApplications().get(0).getCompanyName(),"Google");
+
+		
+	}
 }

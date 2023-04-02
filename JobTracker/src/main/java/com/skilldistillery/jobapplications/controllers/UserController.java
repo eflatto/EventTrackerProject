@@ -24,7 +24,7 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("users")
-	public List<User> getAllApps() {
+	public List<User> getAllUsers() {
 
 		List<User> list = userService.findAll();
 
@@ -32,7 +32,7 @@ public class UserController {
 	}
 
 	@GetMapping("users/{id}")
-	public User getSingleApp(@PathVariable int id) {
+	public User getSingleUser(@PathVariable int id) {
 
 		User user = userService.getUserById(id);
 
@@ -40,7 +40,7 @@ public class UserController {
 	}
 
 	@PostMapping("users")
-	public User createApp(@RequestBody User user) {
+	public User createUser(@RequestBody User user) {
 
 		user = userService.create(user);
 

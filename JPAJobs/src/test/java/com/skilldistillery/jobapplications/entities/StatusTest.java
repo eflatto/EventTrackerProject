@@ -46,4 +46,10 @@ class StatusTest {
 		assertEquals(status.getStatusName(),"under review");
 		
 	}
+	@Test
+	void test_job_status_mapping() {
+		assertNotNull(status);
+		assertEquals(status.getJobApplication().get(0).getCompanyName(),"Google");
+		
+	}
 }

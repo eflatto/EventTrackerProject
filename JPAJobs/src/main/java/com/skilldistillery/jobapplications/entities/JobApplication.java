@@ -8,38 +8,53 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="job_application")
+@Table(name = "job_application")
 public class JobApplication {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	private String notes;
-	
-	private Double salary;
-	
-	@Column(name="company_name")
-	private String companyName;
-	
-	@Column(name="job_title")
-	private String jobTitle;
-	
-	@Column(name="job_description")
-	private String jobDescription;
-	
-	@Column(name="date_applied")
-	private LocalDate dateApplied;
-	
 
-	
-	
-	
-	
+	private String notes;
+
+	private Double salary;
+
+	@Column(name = "company_name")
+	private String companyName;
+
+	@Column(name = "job_title")
+	private String jobTitle;
+
+	@Column(name = "job_description")
+	private String jobDescription;
+
+	@Column(name = "date_applied")
+	private LocalDate dateApplied;
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="status_id")
+	private Status status;
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	public String getNotes() {
 		return notes;
 	}
@@ -88,19 +103,18 @@ public class JobApplication {
 		this.id = id;
 	}
 
-	
 	public String getCompanyName() {
 		return companyName;
 	}
-	
+
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	
+
 	public JobApplication() {
 		super();
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -118,13 +132,13 @@ public class JobApplication {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "JobApplication [id=" + id + ", notes=" + notes + ", salary=" + salary + ", companyName=" + companyName
-				+ ", jobTitle=" + jobTitle + ", jobDescription=" + jobDescription + ", dateApplied=" + dateApplied
-				+ "]";
+
+	public User getUser() {
+		return user;
 	}
 
-	
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 }

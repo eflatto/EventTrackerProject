@@ -1,11 +1,13 @@
 package com.skilldistillery.jobapplications.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,11 +24,11 @@ public class User {
 	private String username;
 	
 	private String password;
+	
+	@OneToMany(mappedBy="user")
+	private List <JobApplication> jobApplications;
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
-	}
+	
 
 	@Override
 	public int hashCode() {
@@ -67,6 +69,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<JobApplication> getJobApplications() {
+		return jobApplications;
+	}
+
+	public void setJobApplications(List<JobApplication> jobApplications) {
+		this.jobApplications = jobApplications;
 	}
 
 }

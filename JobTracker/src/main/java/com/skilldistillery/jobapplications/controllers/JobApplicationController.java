@@ -2,6 +2,7 @@ package com.skilldistillery.jobapplications.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.jobapplications.entities.JobApplication;
+import com.skilldistillery.jobapplications.entities.User;
 import com.skilldistillery.jobapplications.services.JobApplicationService;
+import com.skilldistillery.jobapplications.services.UserService;
 
 @RestController
 @RequestMapping("api")
 public class JobApplicationController {
 	@Autowired
 	private JobApplicationService appService;
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("jobapplications")
 	public List<JobApplication> getAllApps() {
@@ -75,6 +80,32 @@ public class JobApplicationController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
+		}
+	}
+	
+	
+	@PostMapping("users/{userId}/jobapplications")
+	public JobApplication UserCreatesJobApp(
+			@PathVariable Integer userId,
+			@RequestBody JobApplication jobApp,
+			HttpServletRequest req,
+			HttpServletResponse res
+	) {
+		try {
+			User user = userService.getUserById(userId);
+			if (user == null) {
+				res.setStatus(404);
+				return null;
+			}
+			jobApp.setUser(user);
+			jobApp = appService.create(jobApp);
+			res.setStatus(201);
+			res.setHeader("Location", req.getRequestURL().append("/").append(jobApp.getId()).toString());
+			return jobApp;
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			return null;
 		}
 	}
 }

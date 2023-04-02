@@ -1,5 +1,6 @@
 package com.skilldistillery.jobapplications.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="status")
@@ -22,6 +26,21 @@ public class Status {
 	
 	@Column(name="status_name")
 	private String statusName;
+	
+
+	@OneToMany(mappedBy="status")
+	private List <JobApplication> jobApplication;
+	
+
+	
+	
+	public List<JobApplication> getJobApplication() {
+		return jobApplication;
+	}
+
+	public void setJobApplication(List<JobApplication> jobApplication) {
+		this.jobApplication = jobApplication;
+	}
 
 	public int getId() {
 		return id;
@@ -56,10 +75,6 @@ public class Status {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "Status [id=" + id + ", statusName=" + statusName + "]";
-	}
 	
 	
 	
