@@ -1,11 +1,13 @@
 package com.skilldistillery.jobapplications.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.jobapplications.entities.JobApplication;
@@ -46,6 +47,11 @@ public class JobApplicationController {
 
 		return job;
 	}
+	 @GetMapping("jobapplications/date/{startDate}/{endDate}")
+	    public List<JobApplication> getJobApplicationsByDateRange( @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+	    		@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
+	        return appService.findByDateAppliedRange(startDate, endDate);
+	    }
 	
 	@GetMapping("jobapplications/sort/salary")
     public List<JobApplication> findAllSortedBySalary() {

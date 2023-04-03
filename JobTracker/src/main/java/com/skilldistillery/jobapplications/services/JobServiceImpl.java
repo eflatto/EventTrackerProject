@@ -1,5 +1,6 @@
 package com.skilldistillery.jobapplications.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,12 @@ public class JobServiceImpl implements JobApplicationService {
 	public long count() {
 		// TODO Auto-generated method stub
 		return repo.count();
+	}
+
+	@Override
+	public List<JobApplication> findByDateAppliedRange(LocalDate startDate, LocalDate endDate) {
+		// TODO Auto-generated method stub
+	 return repo.findByDateAppliedBetween(startDate, endDate);
 	}
 
 

@@ -1,5 +1,6 @@
 package com.skilldistillery.jobapplications.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.skilldistillery.jobapplications.entities.JobApplication;
@@ -12,6 +13,9 @@ public interface JobApplicationService {
 	boolean deleteById(int jobId);
 	List<JobApplication> findAllByOrderBySalaryDesc();
 	long count();
+	List<JobApplication> findByDateAppliedRange(LocalDate startDate, LocalDate endDate);
+
+	
 
 	
 
