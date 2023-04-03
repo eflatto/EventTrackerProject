@@ -2,9 +2,21 @@
 ### Description
 The Job Application Tracker is a REST API that allows users to keep track of the job applications they have submitted. Users can create, read, update, and delete job applications, as well as filter and sort their applications by various criteria. The application also allows users to associate each job application with a specific user account.
 
-You can checkout all the current job applications by each user here: 
+## End Points
+http://18.213.24.90:8080/JobTracker/
 
-http://18.213.24.90:8080/JobTracker/api/users
+| HTTP Method | Endpoint                                       | Request Body    | Response Body                                                                                   |
+|-------------|------------------------------------------------|----------------|-------------------------------
+| GET         | /api/jobapplications                          | None           | List of JobApplication                                                      |
+| GET         | /api/jobapplications/{id}                     | None           | JobApplication or Error           
+| GET         | /api/jobapplications/date/{startDate}/{endDate} | None           | List of JobApplication            
+| GET         | /api/jobapplications/sort/salary              | None           | List of JobApplication           
+| GET         | /api/jobapplications/count                    | None           | Long                                                                        |
+| POST        | /api/jobapplications                          | JobApplication | JobApplication or Error                                                      |
+| PUT         | /api/jobapplications/{id}                     | JobApplication | JobApplication or Error                                                       |
+| DELETE      | /api/jobapplications/{id}                     | None           | None                                                                           |
+| POST        | /api/users/{userId}/jobapplications           | JobApplication | JobApplication or Error        
+
 
 ### Technologies Used
 <ul>
