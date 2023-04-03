@@ -2,6 +2,10 @@
 ### Description
 The Job Application Tracker is a REST API that allows users to keep track of the job applications they have submitted. Users can create, read, update, and delete job applications, as well as filter and sort their applications by various criteria. The application also allows users to associate each job application with a specific user account.
 
+You can checkout all the current job applications here: 
+
+http://18.213.24.90:8080/JobTracker/api/jobapplications
+
 ### Technologies Used
 <ul>
 <li>Java</li>
@@ -60,6 +64,8 @@ The controller  classes are Spring REST controllers that provide endpoints for p
 Testing is essential part of the development process, i got a better understanding of using @SpringBootTest to test the endpoints.
 
 Using @JsonIgnoreProperties over @JsonIgnore to ignore certain properties related to entities in order to stop infinite recursion without ignoring the whole object itself.
+
+
 
  
 
