@@ -4,7 +4,7 @@ The Job Application Tracker is a REST API that allows users to keep track of the
 
 You can checkout all the current job applications here: 
 
-http://18.213.24.90:8080/JobTracker/api/jobapplications
+http://18.213.24.90:8080/JobTracker/api/users
 
 ### Technologies Used
 <ul>
