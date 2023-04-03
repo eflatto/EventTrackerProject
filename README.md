@@ -12,10 +12,10 @@ http://18.213.24.90:8080/JobTracker
 | GET         | /api/jobapplications/date/{startDate}/{endDate} |              | JobApplication by Date Range           
 | GET         | /api/jobapplications/sort/salary              |                | Job Apps sorted by Salary           
 | GET         | /api/jobapplications/count                    |                | Count of all applications                                                                       |
-| POST        | /api/jobapplications                          |                | Created JobApplication                                                       |
-| PUT         | /api/jobapplications/{id}                     |                 | Updated Job App                                                       |
+| POST        | /api/jobapplications                          |JobApplication object to be created in the database | Created JobApplication                                                       |
+| PUT         | /api/jobapplications/{id}                     |  JobApplication object with updated fields for the specified ID               | Updated Job App                                                       |
 | DELETE      | /api/jobapplications/{id}                     |                  | Deleted Job App                                                                          |
-| POST        | /api/users/{userId}/jobapplications           |                   | User Posted Job App       
+| POST        | /api/users/{userId}/jobapplications           | obApplication object to be created in the database, associated with the User with the specified userId                  | User Posted Job App       
 
 
 ### Technologies Used
