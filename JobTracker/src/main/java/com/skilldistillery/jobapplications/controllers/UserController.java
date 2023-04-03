@@ -51,7 +51,7 @@ public class UserController {
 		User user = userService.getUserById(id);
 		List<JobApplication> jobs = user.getJobApplications();
 		return jobs;
-	}
+	} 
 
 	@PostMapping("users")
 	public User createUser(@RequestBody User user) {
