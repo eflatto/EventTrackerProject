@@ -7,15 +7,15 @@ http://18.213.24.90:8080/JobTracker/
 
 | HTTP Method | Endpoint                                       | Request Body    | Response Body                                                                                   |
 |-------------|------------------------------------------------|----------------|-------------------------------
-| GET         | /api/jobapplications                          | None           | List of JobApplication                                                      |
-| GET         | /api/jobapplications/{id}                     | None           | JobApplication or Error           
-| GET         | /api/jobapplications/date/{startDate}/{endDate} | None           | List of JobApplication            
-| GET         | /api/jobapplications/sort/salary              | None           | List of JobApplication           
-| GET         | /api/jobapplications/count                    | None           | Long                                                                        |
-| POST        | /api/jobapplications                          | JobApplication | JobApplication or Error                                                      |
-| PUT         | /api/jobapplications/{id}                     | JobApplication | JobApplication or Error                                                       |
-| DELETE      | /api/jobapplications/{id}                     | None           | None                                                                           |
-| POST        | /api/users/{userId}/jobapplications           | JobApplication | JobApplication or Error        
+| GET         | /api/jobapplications                          |                 | List of JobApplication                                                      |
+| GET         | /api/jobapplications/{id}                     |            | JobApplication by Id           
+| GET         | /api/jobapplications/date/{startDate}/{endDate} |              | JobApplication by Date Range           
+| GET         | /api/jobapplications/sort/salary              |                | Job Apps sorted by Salary           
+| GET         | /api/jobapplications/count                    |                | Count of all applications                                                                       |
+| POST        | /api/jobapplications                          |                | Created JobApplication                                                       |
+| PUT         | /api/jobapplications/{id}                     |                 | Updated Job App                                                       |
+| DELETE      | /api/jobapplications/{id}                     |                  | Deleted Job App                                                                          |
+| POST        | /api/users/{userId}/jobapplications           |                   | User Posted Job App       
 
 
 ### Technologies Used
