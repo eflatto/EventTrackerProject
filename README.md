@@ -12,8 +12,9 @@ The Job Application Tracker is a REST API that allows users to keep track of the
 <li>Gradle</li>
 <li>Spring Data JPA</li>
 </ul>
-Entities
-JobApplication Class
+
+## Entities
+### JobApplication Class
 This entity is the most important entity in the project it contains the following attributes:
 
 <ul>
@@ -57,6 +58,8 @@ The controller  classes are Spring REST controllers that provide endpoints for p
 
 ## Lessons Learned
 Testing is essential part of the development process, i got a better understanding of using @SpringBootTest to test the endpoints.
+
+Using @JsonIgnoreProperties over @JsonIgnore to ignore certain properties related to entities in order to stop infinite recursion without ignoring the whole object itself.
 
  
 
