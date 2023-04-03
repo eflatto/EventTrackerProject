@@ -2,7 +2,7 @@
 ### Description
 The Job Application Tracker is a REST API that allows users to keep track of the job applications they have submitted. Users can create, read, update, and delete job applications, as well as filter and sort their applications by various criteria. The application also allows users to associate each job application with a specific user account.
 
-You can checkout all the current job applications here: 
+You can checkout all the current job applications by each user here: 
 
 http://18.213.24.90:8080/JobTracker/api/users
 
