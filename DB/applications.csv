@@ -1,0 +1,14 @@
+id,company_name,notes,date_applied,job_title,job_description,salary,user_id,status_id
+1,Google,"Submitted application online on LinkedIn",2023-05-06,"Software Engineer","We are seeking a Full Stack Developer to join our team! You will be responsible for developing and implementing software solutions to meet the needs of our customers.",125000,1,1
+2,Amazon,"Submitted application online on Indeed",2023-05-05,"Software Engineer","Looking for an experienced software engineer to join our team. The ideal candidate will have a strong background in Java and experience working with large-scale distributed systems.",100000,2,2
+3,Netflix,"Submitted application online on Company Website",2023-03-05,"Software Engineer","Design, develop, and maintain software applications and systems for Netflix's products and services.",120000,NULL,3
+4,"NEW TEST APP 0.5014461860163882",NULL,NULL,NULL,NULL,NULL,NULL,1
+6,"NEW TEST APP 0.3195027861898434",NULL,NULL,NULL,NULL,NULL,NULL,1
+8,"NEW TEST APP 0.2466498934804764",NULL,NULL,NULL,NULL,NULL,NULL,1
+10,"NEW TEST APP 0.7623995922822818",NULL,NULL,NULL,NULL,NULL,NULL,1
+12,"NEW TEST APP 0.05681849413681417",NULL,NULL,NULL,NULL,NULL,NULL,1
+14,"NEW TEST APP 0.4979138795675022",NULL,NULL,NULL,NULL,NULL,NULL,1
+16,"NEW TEST APP 0.2385983503258301",NULL,NULL,NULL,NULL,NULL,NULL,1
+17,"NEW TEST APP 0.9235817086269371",NULL,NULL,NULL,NULL,NULL,NULL,1
+20,"NEW TEST APP 0.8122477287857494",NULL,NULL,NULL,NULL,NULL,NULL,1
+21,"NEW TEST APP 0.9939617721406838",NULL,NULL,NULL,NULL,NULL,NULL,1
