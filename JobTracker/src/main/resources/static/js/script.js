@@ -38,7 +38,7 @@ function init() {
 		addNewJob(jobApplication);
 	});
 
-	//Update Character
+
 	document.updateJobForm.updateJobButton.addEventListener('click', function(e) {
 		e.preventDefault();
 		let form = document.updateJobForm;
@@ -57,7 +57,7 @@ function init() {
 		updateAJob(updateJob, jobId);
 	});
 	
-	//Delete Character
+	
 	document.deleteJobForm.deleteJob.addEventListener('click', function(e){
 		e.preventDefault();
 		let form = document.deleteJobForm;
