@@ -23,4 +23,62 @@ export class JobAppService {
       })
     );
   }
+
+  public create(jobApp: JobApp): Observable<JobApp> {
+    // todo.completed = false;
+    // todo.description = '';
+    return this.http.post<JobApp>(this.url, jobApp).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+          () =>
+            new Error('JobAppService.create(): error creating Product: ' + err)
+        );
+      })
+    );
+  }
+
+
+
+  update(jobApp: JobApp): Observable<JobApp> {
+    // if(jobApp.completed){
+    //   jobApp.completeDate=this.datePipe.transform(Date.now()),'shortDate';
+    // }
+    return this.http.put<JobApp>(this.url +"/"+ jobApp.id, jobApp).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+          () =>
+            new Error('TodoService.create(): error creating Product: ' + err)
+        );
+      })
+    );
+
+  }
+  show(todoId:number): Observable<JobApp> {
+
+    return this.http.get<JobApp>(this.url + "/" +todoId ).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('TodoService.index(): error retrieving Todos: ' + err)
+        );
+      })
+    );
+  }
+  destroy(todoId: number) : Observable<void>{
+
+   return this.http.delete<void>(this.url+"/"+todoId).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+          () =>
+            new Error('TodoService.destroy(): error destroying todo: ' + err)
+        );
+      })
+    );
+
+  }
+
+
 }
