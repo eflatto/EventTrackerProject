@@ -117,6 +117,10 @@ USE `jobsdb`;
 INSERT INTO `user` (`id`, `username`, `password`) VALUES (1, 'admin', 'admin');
 INSERT INTO `user` (`id`, `username`, `password`) VALUES (2, 'edwin', 'edwin');
 INSERT INTO `user` (`id`, `username`, `password`) VALUES (3, 'joe', 'joe');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (4, 'John', 'Doe');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (5, 'John', 'De');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (6, 'John', 'Deo');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (7, 'John', 'Doe');
 
 COMMIT;
 

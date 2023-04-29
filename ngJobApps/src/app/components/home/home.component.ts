@@ -91,6 +91,7 @@ export class HomeComponent implements OnInit {
 
         this.reload();
       },
+
       error: (kaboom) => {
         console.error('Error updating Todo');
         console.error(kaboom);
