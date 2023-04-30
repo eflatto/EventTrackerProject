@@ -1,0 +1,7 @@
+<div class="loginpage">
+  <form>
+    <input type="text" name="username" placeholder="Username" [(ngModel)]="loginUser.username">
+    <input type="password" name="password" placeholder="Password" [(ngModel)]="loginUser.password">
+    <button type="button" class="btn btn-primary btn-block mb-4" (click)="login(loginUser)">Sign in</button>
+  </form>
+</div>
