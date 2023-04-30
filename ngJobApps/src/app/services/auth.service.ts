@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 import { Buffer } from 'buffer';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,9 @@ export class AuthService {
   private url = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
+
+
+
 
   register(user: User): Observable<User> {
     return this.http.post<User>(this.url + 'register', user).pipe(
@@ -96,6 +100,8 @@ export class AuthService {
   getCredentials(): string | null {
     return localStorage.getItem('credentials');
   }
+
+
 
 
 

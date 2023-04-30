@@ -26,6 +26,7 @@ export class SignupComponent {
       next: (registeredUser) => {
         this.auth.login(user.username, user.password).subscribe({
           next: (loggedInUser) => {
+
             this.router.navigateByUrl('/home');
           },
           error: (problem) => {

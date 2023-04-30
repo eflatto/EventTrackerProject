@@ -1,5 +1,6 @@
 package com.skilldistillery.jobapplications.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +37,17 @@ public class UserController {
 		List<User> list = userService.findAll();
 
 		return list;
+	}
+	
+	@GetMapping
+	public String Welcome() {
+		return "Welome to OAuth!";
+	}
+	
+	@GetMapping("/user")
+	public Principal user(Principal principal) {
+		System.out.println("username : " + principal.getName());
+		return principal;
 	}
 	
 
