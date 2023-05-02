@@ -26,13 +26,31 @@ public class User {
 	private int id;
 
 	private String username;
+	private String role;
+	private boolean enabled;
 
-	@JsonProperty(access = Access.WRITE_ONLY)
+	
 	private String password;
 
 	@OneToMany(mappedBy = "user")
 	@JsonIgnoreProperties({"user"})
 	private List<JobApplication> jobApplications;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	@Override
 	public int hashCode() {

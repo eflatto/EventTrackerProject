@@ -10,4 +10,5 @@ import com.skilldistillery.jobapplications.entities.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 	public User findById(int id);
 	public List<User>findByUsernameLike(String namePatt);
+	User findByUsername(String username);
 }
