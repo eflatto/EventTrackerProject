@@ -23,6 +23,21 @@ DROP SCHEMA IF EXISTS `jobsdb` ;
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `jobsdb` DEFAULT CHARACTER SET utf8 ;
 USE `jobsdb` ;
+
+-- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user` ;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL,
+  `username` VARCHAR(45) NULL,
+  `password` VARCHAR(300) NULL,
+  `enabled` TINYINT NULL,
+  `role` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
 USE `jobsdb` ;
 
 -- -----------------------------------------------------
@@ -35,21 +50,6 @@ CREATE TABLE IF NOT EXISTS `status` (
   `status_name` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -69,16 +69,10 @@ CREATE TABLE IF NOT EXISTS `job_application` (
   `user_id` INT(11) NULL DEFAULT NULL,
   `status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_job_application_user_idx` (`user_id` ASC),
   INDEX `fk_job_application_status1_idx` (`status_id` ASC),
   CONSTRAINT `fk_job_application_status1`
     FOREIGN KEY (`status_id`)
     REFERENCES `status` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_job_application_user`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -98,6 +92,16 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `jobsdb`;
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', '$2a$10$nShOi5/f0bKNvHB8x0u3qOpeivazbuN0NE4TO0LGvQiTMafaBxLJS', 1, 'user');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `status`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -105,22 +109,6 @@ USE `jobsdb`;
 INSERT INTO `status` (`id`, `status_name`) VALUES (1, 'applied');
 INSERT INTO `status` (`id`, `status_name`) VALUES (2, 'rejected');
 INSERT INTO `status` (`id`, `status_name`) VALUES (3, 'accepted');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `user`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `jobsdb`;
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (1, 'admin', 'admin');
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (2, 'edwin', 'edwin');
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (3, 'joe', 'joe');
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (4, 'John', 'Doe');
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (5, 'John', 'De');
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (6, 'John', 'Deo');
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (7, 'John', 'Doe');
 
 COMMIT;
 
