@@ -1,5 +1,6 @@
 package com.skilldistillery.jobapplications.controllers;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -117,13 +118,14 @@ public class JobApplicationController {
 	
 	@PostMapping("users/{userId}/jobapplications")
 	public JobApplication UserCreatesJobApp(
-			@PathVariable Integer userId,
+			Principal principal,
 			@RequestBody JobApplication jobApp,
 			HttpServletRequest req,
 			HttpServletResponse res
 	) {
+		
 		try {
-			User user = userService.getUserById(userId);
+			User user = userService.;
 			if (user == null) {
 				res.setStatus(404);
 				return null;
