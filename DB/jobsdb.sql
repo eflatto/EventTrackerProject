@@ -96,7 +96,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `jobsdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', '$2a$10$nShOi5/f0bKNvHB8x0u3qOpeivazbuN0NE4TO0LGvQiTMafaBxLJS', 1, 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', '$2a$10$nShOi5/f0bKNvHB8x0u3qOpeivazbuN0NE4TO0LGvQiTMafaBxLJS', 1, 'admin');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (2, 'edwin', 'edwin', 1, 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 'joe', 'joe', 1, 'user');
 
 COMMIT;
 

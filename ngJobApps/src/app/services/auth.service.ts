@@ -25,7 +25,7 @@ register(user: User): Observable<User> {
     catchError((err: any) => {
       console.log(err);
       return throwError(
-        () => new Error('AuthService.register(): error registering user.')
+        () => new Error('AuthService.register(): error registering hello')
       );
     })
   );

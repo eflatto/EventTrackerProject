@@ -3,29 +3,41 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { JobApp } from '../models/job-app';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobAppService {
+
   // private baseUrl = 'http://localhost:8085/';
   private url = environment.baseUrl + 'api/jobapplications'
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    private auth:AuthService
   ) { }
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
 
   index(): Observable<JobApp[]> {
     return this.http.get<JobApp[]>(this.url).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
-          () => new Error('JobApp.index(): error retrieving pokemon: ' + err)
+          () => new Error('JobApp.index(): error retrieving jobs: ' + err)
         );
       })
     );
   }
 
-  public create(jobApp: JobApp): Observable<JobApp> {
+   create(jobApp: JobApp): Observable<JobApp> {
     // todo.completed = false;
     // todo.description = '';
     return this.http.post<JobApp>(this.url, jobApp).pipe(
@@ -33,7 +45,7 @@ export class JobAppService {
         console.error(err);
         return throwError(
           () =>
-            new Error('JobAppService.create(): error creating Product: ' + err)
+            new Error('JobAppService.create(): error creating job: ' + err)
         );
       })
     );
@@ -50,7 +62,7 @@ export class JobAppService {
         console.error(err);
         return throwError(
           () =>
-            new Error('TodoService.create(): error creating Product: ' + err)
+            new Error('JJobAppService.create(): error updating job: ' + err)
         );
       })
     );
@@ -62,7 +74,7 @@ export class JobAppService {
       catchError((err: any) => {
         console.log(err);
         return throwError(
-          () => new Error('TodoService.index(): error retrieving Todos: ' + err)
+          () => new Error('JobAppService.index(): error retrieving job: ' + err)
         );
       })
     );
@@ -74,7 +86,7 @@ export class JobAppService {
         console.error(err);
         return throwError(
           () =>
-            new Error('TodoService.destroy(): error destroying todo: ' + err)
+            new Error('JobAppService.destroy(): error destroying job: ' + err)
         );
       })
     );
