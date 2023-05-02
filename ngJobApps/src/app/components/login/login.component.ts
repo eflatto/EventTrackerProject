@@ -18,11 +18,16 @@ constructor(private auth: AuthService, private router: Router) { }
     console.log(user);
 
     this.auth.login(user.username, user.password).subscribe({
+
       next: (loggedInUser) => {
-        this.router.navigateByUrl('/home');
+
+        console.log(loggedInUser);
+
       },
       error: (problem) => {
-        console.error('RegisterComponent.register(: Error logging in user:');
+
+        console.log(user);
+        console.error('Error logging in user:');
         console.error(problem);
       }
     })
