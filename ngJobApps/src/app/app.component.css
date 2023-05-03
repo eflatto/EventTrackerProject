@@ -1,5 +1,5 @@
 @import "~bootstrap/dist/css/bootstrap.css";
-.container {
+/* .container {
   max-width: 800px;
   margin: 0 auto;
 
@@ -86,4 +86,12 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0069d9;
 
+} */
+
+.my-nav {
+  /* your navbar styles here */
+}
+
+.my-content {
+  padding-top: 80px;
 }

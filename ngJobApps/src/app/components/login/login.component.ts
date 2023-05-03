@@ -22,7 +22,7 @@ constructor(private auth: AuthService, private router: Router) { }
       next: (loggedInUser) => {
 
         console.log(loggedInUser);
-        this.router.navigateByUrl('/jobApps');
+        this.router.navigateByUrl('/profile');
       },
       error: (problem) => {
 

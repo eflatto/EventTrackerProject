@@ -49,8 +49,7 @@ export class JobAppService {
   }
 
    create(jobApp: JobApp): Observable<JobApp> {
-    // todo.completed = false;
-    // todo.description = '';
+
     return this.http.post<JobApp>(this.url, jobApp,this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);

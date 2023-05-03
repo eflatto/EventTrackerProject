@@ -9,13 +9,17 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavComponent {
 
-  // constructor(
-  //   private auth: AuthService,
-  //   private router: Router
-  // ){}
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ){}
 
   // logout() {
   //   this.auth.logout();
   //   this.router.navigateByUrl('/home');
   // }
+
+  loggedIn():boolean{
+    return this.auth.checkLogin();
+  }
 }
