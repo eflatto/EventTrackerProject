@@ -116,31 +116,31 @@ public class JobApplicationController {
 	}
 	
 	
-	@PostMapping("users/{userId}/jobapplications")
-	public JobApplication UserCreatesJobApp(
-			Principal principal,
-			@RequestBody JobApplication jobApp,
-			HttpServletRequest req,
-			HttpServletResponse res
-	) {
-		
-		try {
-			User user = userService.;
-			if (user == null) {
-				res.setStatus(404);
-				return null;
-			}
-			jobApp.setUser(user);
-			jobApp = appService.create(jobApp);
-			res.setStatus(201);
-			res.setHeader("Location", req.getRequestURL().append("/").append(jobApp.getId()).toString());
-			return jobApp;
-		} catch (Exception e) {
-			e.printStackTrace();
-			res.setStatus(400);
-			return null;
-		}
-	}
+//	@PostMapping("users/{userId}/jobapplications")
+//	public JobApplication UserCreatesJobApp(
+//			Principal principal,
+//			@RequestBody JobApplication jobApp,
+//			HttpServletRequest req,
+//			HttpServletResponse res
+//	) {
+//		
+//		try {
+//			User user = userService.;
+//			if (user == null) {
+//				res.setStatus(404);
+//				return null;
+//			}
+//			jobApp.setUser(user);
+//			jobApp = appService.create(jobApp);
+//			res.setStatus(201);
+//			res.setHeader("Location", req.getRequestURL().append("/").append(jobApp.getId()).toString());
+//			return jobApp;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			res.setStatus(400);
+//			return null;
+//		}
+//	}
 	
 
 }
