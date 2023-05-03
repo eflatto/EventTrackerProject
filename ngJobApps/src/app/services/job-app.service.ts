@@ -27,7 +27,7 @@ export class JobAppService {
   }
 
   index(): Observable<JobApp[]> {
-    return this.http.get<JobApp[]>(this.url).pipe(
+    return this.http.get<JobApp[]>(this.url, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

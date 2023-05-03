@@ -11,6 +11,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { JobApplicationsComponent } from './components/job-applications/job-applications.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { RegisterComponent } from './components/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { JobApplicationsComponent } from './components/job-applications/job-appl
     LoginComponent,
     SignupComponent,
     NavComponent,
-    JobApplicationsComponent
+    JobApplicationsComponent,
+    LogoutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
