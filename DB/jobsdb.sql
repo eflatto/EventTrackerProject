@@ -30,7 +30,7 @@ USE `jobsdb` ;
 DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NULL,
   `password` VARCHAR(300) NULL,
   `enabled` TINYINT NULL,
@@ -66,13 +66,19 @@ CREATE TABLE IF NOT EXISTS `job_application` (
   `job_title` VARCHAR(45) NULL DEFAULT NULL,
   `job_description` TEXT NULL DEFAULT NULL,
   `salary` INT(11) NULL DEFAULT NULL,
-  `user_id` INT(11) NULL DEFAULT NULL,
   `status_id` INT(11) NULL DEFAULT NULL,
+  `user_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_job_application_status1_idx` (`status_id` ASC),
+  INDEX `fk_job_application_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_job_application_status1`
     FOREIGN KEY (`status_id`)
     REFERENCES `status` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_job_application_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `jobsdb`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -120,9 +126,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `jobsdb`;
-INSERT INTO `job_application` (`id`, `company_name`, `notes`, `date_applied`, `job_title`, `job_description`, `salary`, `user_id`, `status_id`) VALUES (1, 'Google', 'Submitted application online on LinkedIn', '2023-05-06', 'Software Engineer', 'We are seeking a Full Stack Developer to join our team! You will be responsible for developing and implementing software solutions to meet the needs of our customers.', 125000, 1, 1);
-INSERT INTO `job_application` (`id`, `company_name`, `notes`, `date_applied`, `job_title`, `job_description`, `salary`, `user_id`, `status_id`) VALUES (2, 'Amazon', 'Submitted application online on Indeed', '2023-05-05', 'Software Engineer', 'Looking for an experienced software engineer to join our team. The ideal candidate will have a strong background in Java and experience working with large-scale distributed systems.', 100000, 2, 2);
-INSERT INTO `job_application` (`id`, `company_name`, `notes`, `date_applied`, `job_title`, `job_description`, `salary`, `user_id`, `status_id`) VALUES (3, 'Netflix', 'Submitted application online on Company Website', '2023-03-05', 'Software Engineer', 'Design, develop, and maintain software applications and systems for Netflix\'s products and services.', 120000, 3, 3);
+INSERT INTO `job_application` (`id`, `company_name`, `notes`, `date_applied`, `job_title`, `job_description`, `salary`, `status_id`, `user_id`) VALUES (1, 'Google', 'Submitted application online on LinkedIn', '2023-05-06', 'Software Engineer', 'We are seeking a Full Stack Developer to join our team! You will be responsible for developing and implementing software solutions to meet the needs of our customers.', 125000, 1, NULL);
+INSERT INTO `job_application` (`id`, `company_name`, `notes`, `date_applied`, `job_title`, `job_description`, `salary`, `status_id`, `user_id`) VALUES (2, 'Amazon', 'Submitted application online on Indeed', '2023-05-05', 'Software Engineer', 'Looking for an experienced software engineer to join our team. The ideal candidate will have a strong background in Java and experience working with large-scale distributed systems.', 100000, 2, NULL);
+INSERT INTO `job_application` (`id`, `company_name`, `notes`, `date_applied`, `job_title`, `job_description`, `salary`, `status_id`, `user_id`) VALUES (3, 'Netflix', 'Submitted application online on Company Website', '2023-03-05', 'Software Engineer', 'Design, develop, and maintain software applications and systems for Netflix\'s products and services.', 120000, 3, NULL);
 
 COMMIT;
 
