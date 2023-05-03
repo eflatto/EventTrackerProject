@@ -1,5 +1,6 @@
 package com.skilldistillery.jobapplications.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.jobapplications.entities.JobApplication;
 import com.skilldistillery.jobapplications.entities.User;
+import com.skilldistillery.jobapplications.services.AuthService;
 import com.skilldistillery.jobapplications.services.JobApplicationService;
 import com.skilldistillery.jobapplications.services.UserService;
 
@@ -26,6 +28,9 @@ import com.skilldistillery.jobapplications.services.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private AuthService authService;
 	
 	@Autowired
 	private JobApplicationService jobService;
@@ -46,10 +51,17 @@ public class UserController {
 
 		return user;
 	}
-	@GetMapping("users/{id}/apps")
-	public List<JobApplication> getUserJobs(@PathVariable int id) {
+	@GetMapping("users/{id}/apps/id")
+	public List<JobApplication> getUserJobsbyId(@PathVariable int id) {
 		
 		User user = userService.getUserById(id);
+		List<JobApplication> jobs = user.getJobApplications();
+		return jobs;
+	} 
+	@GetMapping("users/apps")
+	public List<JobApplication> getUserJobsbyUserName(Principal principal) {
+		
+		User user = authService.getUserByUsername(principal.getName());
 		List<JobApplication> jobs = user.getJobApplications();
 		return jobs;
 	} 

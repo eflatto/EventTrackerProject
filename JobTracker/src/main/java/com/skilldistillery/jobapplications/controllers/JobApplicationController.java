@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.jobapplications.entities.JobApplication;
 import com.skilldistillery.jobapplications.entities.User;
+import com.skilldistillery.jobapplications.services.AuthService;
 import com.skilldistillery.jobapplications.services.JobApplicationService;
 import com.skilldistillery.jobapplications.services.UserService;
 
@@ -32,6 +33,8 @@ public class JobApplicationController {
 	private JobApplicationService appService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private AuthService authService;
 
 	@GetMapping("jobapplications")
 	public List<JobApplication> getAllApps() {
@@ -67,9 +70,10 @@ public class JobApplicationController {
 
 	@PostMapping("jobapplications")
 	public JobApplication createApp(@RequestBody JobApplication jobApp,HttpServletRequest req,
-			HttpServletResponse res) {
+			HttpServletResponse res,Principal principal) {
+		User user = authService.getUserByUsername(principal.getName());
 		try {
-		jobApp = appService.create(jobApp);
+		jobApp = appService.create(jobApp,user);
 		res.setStatus(201);
 		StringBuffer url = req.getRequestURL();
 		url.append("/").append(jobApp.getId());

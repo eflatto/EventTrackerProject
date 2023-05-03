@@ -13,6 +13,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { JobApplicationsComponent } from './components/job-applications/job-applications.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { RegisterComponent } from './components/register/register.component';
     NavComponent,
     JobApplicationsComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

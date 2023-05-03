@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.skilldistillery.jobapplications.entities.JobApplication;
+import com.skilldistillery.jobapplications.entities.User;
 
 public interface JobApplicationService {
 	List<JobApplication> findAll();
 	JobApplication getJobById(int jobId);
-	JobApplication create(JobApplication job);
+	JobApplication create(JobApplication job,User user);
 	JobApplication update(JobApplication job,int jobId);
 	boolean deleteById(int jobId);
 	List<JobApplication> findAllByOrderBySalaryDesc();

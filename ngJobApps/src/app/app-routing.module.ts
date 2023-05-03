@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { JobApplicationsComponent } from './components/job-applications/job-applications.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'jobApps', component: JobApplicationsComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
 
 ];
 

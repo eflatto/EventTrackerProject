@@ -12,6 +12,7 @@ export class JobAppService {
 
   // private baseUrl = 'http://localhost:8085/';
   private url = environment.baseUrl + 'api/jobapplications'
+  private urlUser = environment.baseUrl + 'api/users'
   constructor(
     private http:HttpClient,
     private auth:AuthService
@@ -28,6 +29,16 @@ export class JobAppService {
 
   index(): Observable<JobApp[]> {
     return this.http.get<JobApp[]>(this.url, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('JobApp.index(): error retrieving jobs: ' + err)
+        );
+      })
+    );
+  }
+  getJobsByUser(): Observable<JobApp[]> {
+    return this.http.get<JobApp[]>(this.urlUser+"/apps", this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

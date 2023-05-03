@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jobapplications.entities.JobApplication;
+import com.skilldistillery.jobapplications.entities.User;
 import com.skilldistillery.jobapplications.repositories.JobApplicationRepository;
 
 @Service
@@ -27,11 +28,12 @@ public class JobServiceImpl implements JobApplicationService {
 	}
 
 	@Override
-	public JobApplication create(JobApplication job) {
+	public JobApplication create(JobApplication job,User user) {
 		// TODO Auto-generated method stub
 		if(job==null) {
 			throw new IllegalArgumentException("Job is null");
 		}
+		job.setUser(user);
 		return repo.saveAndFlush(job);
 	}
 
