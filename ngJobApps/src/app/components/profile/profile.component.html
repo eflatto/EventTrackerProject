@@ -2,9 +2,10 @@
   <h1>Job Applications</h1>
   <ul>
     <li *ngFor="let jobApp of jobApps">
-      <p>Job Id: {{ jobApp.id }}</p>
+      <p> Title: {{ jobApp.jobTitle}}</p>
       <p>Company Name: {{ jobApp.companyName }}</p>
       <p>Job Description: {{ jobApp.jobDescription }}</p>
+      <p> Date Applied: {{ jobApp.dateApplied | date}}</p>
       <button class="btn btn-outline-primary" (click)="setSelectedJobApp(jobApp)">Edit</button>
       <button (click)="deleteJobApp(jobApp.id)">Delete</button>
 
@@ -19,14 +20,31 @@
 
     </li>
   </ul>
-  <H1>Add Job Application</H1>
-  <form (submit)="addJobApp(newJobApp)">
-    <label for="company">Company:</label>
-    <input type="text" name="companyName" id="companyName" [(ngModel)]="newJobApp.companyName">
-    <label for="jobDescription">Job Description:</label>
-    <input type="text" name ="jobDescription" id="jobDescription" [(ngModel)]="newJobApp.jobDescription">
-    <button type="submit">Add Job Application</button>
-  </form>
+
+  <h2>Add Job Application</h2>
+  <form>
+    <div class="form-group">
+      <label for="companyName">Company Name</label>
+      <input type="text" class="form-control" id="companyName" name="name" [(ngModel)]="newJobApp.companyName">
+    </div>
+    <div class="form-group">
+      <label for="jobTitle">Job Title</label>
+      <input type="text" class="form-control" id="jobTitle"name="title"[(ngModel)]="newJobApp.jobTitle">
+    </div>
+    <div class="form-group">
+      <label for="jobDescription">Job Description</label>
+      <input type="text" class="form-control" id="jobDescription"name="description" [(ngModel)]="newJobApp.jobDescription">
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input type="number" class="form-control" id="salary" name="salary" [(ngModel)]="newJobApp.salary">
+    </div>
+    <div class="form-group">
+      <label for="dateApplied">Date Applied</label>
+      <input type="date" class="form-control" id="dateApplied"name="date" [(ngModel)]="newJobApp.dateApplied ">
+    </div>
+
+    <button (click)="addJobApp(newJobApp)">Edit Application</button>
 
 
-</div>
+</form>

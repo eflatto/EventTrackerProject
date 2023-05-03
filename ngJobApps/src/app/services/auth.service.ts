@@ -12,7 +12,7 @@ export class AuthService {
  // Set port number to server's port
 //  private baseUrl = 'http://localhost:8087/';
 private url =environment.baseUrl;
-
+public currentUser: Observable<User> | undefined;
 @Output() getLoggedIn: EventEmitter<any> = new EventEmitter();
 // loggedInUser: User | null = null;
 
@@ -34,6 +34,7 @@ register(user: User): Observable<User> {
 login(username: string, password: string): Observable<User> {
   const credentials = this.generateBasicAuthCredentials(username, password);
   const httpOptions = {
+
     headers: new HttpHeaders({
       Authorization: `Basic ${credentials}`,
       'X-Requested-With': 'XMLHttpRequest',

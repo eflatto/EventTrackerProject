@@ -10,7 +10,7 @@ public interface JobApplicationService {
 	List<JobApplication> findAll();
 	JobApplication getJobById(int jobId);
 	JobApplication create(JobApplication job,User user);
-	JobApplication update(JobApplication job,int jobId);
+	JobApplication update(JobApplication job, int jobId,User user);
 	boolean deleteById(int jobId);
 	List<JobApplication> findAllByOrderBySalaryDesc();
 	long count();

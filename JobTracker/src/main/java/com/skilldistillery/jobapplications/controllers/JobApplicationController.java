@@ -90,10 +90,11 @@ public class JobApplicationController {
 
 	@PutMapping("jobapplications/{id}")
 	public JobApplication updateApp(@PathVariable Integer id, @RequestBody JobApplication jobApp,
-			HttpServletResponse res) {
+			HttpServletResponse res,Principal principal) {
+		User user = authService.getUserByUsername(principal.getName());
 
 		try {
-			jobApp = appService.update(jobApp, id);
+			jobApp = appService.update(jobApp, id,user);
 			if (jobApp == null) {
 				res.setStatus(404);
 			}

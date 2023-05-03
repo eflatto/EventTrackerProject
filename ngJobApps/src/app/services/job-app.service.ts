@@ -67,7 +67,7 @@ export class JobAppService {
     // if(jobApp.completed){
     //   jobApp.completeDate=this.datePipe.transform(Date.now()),'shortDate';
     // }
-    return this.http.put<JobApp>(this.url +"/"+ jobApp.id, jobApp).pipe(
+    return this.http.put<JobApp>(this.url +"/"+ jobApp.id, jobApp,this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(
@@ -91,7 +91,7 @@ export class JobAppService {
   }
   destroy(todoId: number) : Observable<void>{
 
-   return this.http.delete<void>(this.url+"/"+todoId).pipe(
+   return this.http.delete<void>(this.url+"/"+todoId,this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(

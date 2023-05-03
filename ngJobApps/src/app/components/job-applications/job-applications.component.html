@@ -5,9 +5,12 @@
     <h1>Job Applications</h1>
     <ul>
       <li *ngFor="let jobApp of jobApps">
-        <p>Job Id: {{ jobApp.id }}</p>
+        <!-- <p>Job Id: {{ jobApp.id }}</p> -->
+        <p> Title: {{ jobApp.jobTitle}}</p>
         <p>Company Name: {{ jobApp.companyName }}</p>
         <p>Job Description: {{ jobApp.jobDescription }}</p>
+        <p> Date Applied: {{ jobApp.dateApplied }}</p>
+
         <button class="btn btn-outline-primary" (click)="setSelectedJobApp(jobApp)">Edit</button>
         <button (click)="deleteJobApp(jobApp.id)">Delete</button>
 

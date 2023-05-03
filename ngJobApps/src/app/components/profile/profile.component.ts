@@ -42,10 +42,8 @@ export class ProfileComponent {
       next: (updatedTodo) => {
         this.editJobApp = null;
           this.selected = updatedTodo;
-
         this.reload();
       },
-
       error: (kaboom) => {
         console.error('Error updating Todo');
         console.error(kaboom);

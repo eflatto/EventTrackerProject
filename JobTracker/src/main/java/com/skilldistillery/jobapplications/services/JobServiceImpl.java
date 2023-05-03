@@ -9,12 +9,15 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.jobapplications.entities.JobApplication;
 import com.skilldistillery.jobapplications.entities.User;
 import com.skilldistillery.jobapplications.repositories.JobApplicationRepository;
+import com.skilldistillery.jobapplications.repositories.UserRepository;
 
 @Service
 public class JobServiceImpl implements JobApplicationService {
 
 	@Autowired 
 	JobApplicationRepository repo;
+	@Autowired 
+	UserRepository userRepo;
 	@Override
 	public List<JobApplication> findAll() {
 		// TODO Auto-generated method stub
@@ -38,9 +41,11 @@ public class JobServiceImpl implements JobApplicationService {
 	}
 
 	@Override
-	public JobApplication update(JobApplication job, int jobId) {
+	public JobApplication update(JobApplication job, int jobId,User user) {
 		// TODO Auto-generated method stub
+		
 		JobApplication existingJob = repo.findById(jobId);
+		user = existingJob.getUser();
 		if(existingJob!= null) {
 			existingJob.setCompanyName(job.getCompanyName());
 			existingJob.setDateApplied(job.getDateApplied());
@@ -48,10 +53,10 @@ public class JobServiceImpl implements JobApplicationService {
 			existingJob.setJobTitle(job.getJobTitle());
 			existingJob.setNotes(job.getNotes());
 			existingJob.setSalary(job.getSalary());
+			userRepo.saveAndFlush(user);
 
-			return repo.saveAndFlush(existingJob);
 		}
-		return null;
+		return repo.saveAndFlush(existingJob);
 	}
 
 	@Override
@@ -82,6 +87,8 @@ public class JobServiceImpl implements JobApplicationService {
 		// TODO Auto-generated method stub
 	 return repo.findByDateAppliedBetween(startDate, endDate);
 	}
+
+
 
 
 }
