@@ -1,15 +1,20 @@
 <nav>
-  <ul class="nav-links">
-    <li><a [routerLink]="['/home']">Home</a></li>
-    <li *ngIf="!loggedIn()"><a [routerLink]="['/login']">Login</a></li>
-    <li><a *ngIf="loggedIn()"[routerLink]="['/logout']" >Logout</a></li>
-    <li ><a *ngIf="!loggedIn()"[routerLink]="['/register']">Register</a></li>
-    <li><a *ngIf="loggedInUser.role==='admin'"[routerLink]="['/jobApps']">Job Applications</a></li>
-    <li ><a *ngIf="loggedIn()"[routerLink]="['/profile']"  >Profile</a></li>
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li *ngIf="!loggedIn()">
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+    </li>
+    <li *ngIf="loggedIn() && loggedInUser.role === 'admin'">
+      <a routerLink="/jobApps" routerLinkActive="active">Job Applications</a>
+    </li>
+    <li *ngIf="!loggedIn()">
+      <a routerLink="/register" routerLinkActive="active">Register</a>
+    </li>
+    <li *ngIf="loggedIn()">
+      <a routerLink="/profile" routerLinkActive="active">Profile</a>
+    </li>
+    <li *ngIf="loggedIn()">
+      <a routerLink="/logout" routerLinkActive="active">Logout</a>
+    </li>
   </ul>
-  <div class="burger">
-    <div class="line1"></div>
-    <div class="line2"></div>
-    <div class="line3"></div>
-  </div>
 </nav>
